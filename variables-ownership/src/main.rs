@@ -16,6 +16,14 @@ fn shadow_with_changing_type() -> f64 {
     return test;
 }
 
+fn shadow_with_scope() -> i32 {
+    let test = 42;
+    {
+        let test = 42.5;
+    }
+    return test;
+}
+
 #[test]
 fn shadow_variable_test(){
     assert_eq!(shadow_variable(), 10);
@@ -24,4 +32,9 @@ fn shadow_variable_test(){
 #[test]
 fn shadow_with_type_change_test(){
     assert_eq!(shadow_with_changing_type(), 42.5);
+}
+
+#[test]
+fn shadow_with_scopes_test(){
+    assert_eq!(shadow_with_scope(), 42);
 }
