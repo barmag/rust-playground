@@ -26,7 +26,7 @@ fn shadow_with_scope() -> i32 {
     return test;
 }
 
-fn string_literals_vs_String() -> String {
+fn string_literals_vs_string() -> String {
     let literal = "Hello";
     let mut mut_literal = " World!";
 
@@ -35,6 +35,28 @@ fn string_literals_vs_String() -> String {
     str_hello
     
     // println!("{}", mut_literal);
+}
+
+fn trim_spaces(source: &str) -> &str {
+    let mut start_index = 0;
+    let mut end_index = source.len();
+    for c in source.chars() {
+        if c == ' ' {
+            start_index += 1;
+        } else {
+            break;
+        }
+    }
+
+    for c in source.chars().rev() {
+        if c == ' ' {
+            end_index -= 1;
+        } else {
+            break;
+        }
+    }
+
+    &source[start_index..end_index]
 }
 
 #[test]
@@ -54,5 +76,23 @@ fn shadow_with_scopes_test(){
 
 #[test]
 fn string_literal_test(){
-    assert_eq!(string_literals_vs_String(), "Hello World!");
+    assert_eq!(string_literals_vs_string(), "Hello World!");
+}
+
+#[test]
+fn trim_spaces_test() {
+    let test1 = "We need more Space.";
+    assert_eq!(trim_spaces(test1), "We need more Space.");
+
+    let test1 = "     We need more Space.";
+    assert_eq!(trim_spaces(test1), "We need more Space.");
+
+    let test1 = "We need more Space.      ";
+    assert_eq!(trim_spaces(test1), "We need more Space.");
+
+    let test1 = "        We need more Space.      ";
+    assert_eq!(trim_spaces(test1), "We need more Space.");
+
+    let test1 = " 🚀 is great ";
+    assert_eq!(trim_spaces(test1), "🚀 is great");
 }
