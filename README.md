@@ -13,3 +13,7 @@ Following LinkedIn course: [Rust Essential Training](https://www.linkedin.com/le
 - Using rust standard library, specifically std::io
 - Using crates via cargo. Add a dependenct on rand crate.
 Using rand library to generate a random number between 1 and 100. Recieve a guess from the user and print if the number is higher, lower, or equal to the generated number.
+
+## structs-rectangle
+Following LinkedIn course: [Rust Essential Training](https://www.linkedin.com/learning/rust-essential-training)
+A project to experiment with structs in rust. The program defines a struct representing a rectangle, with two methods get_area, and scale
